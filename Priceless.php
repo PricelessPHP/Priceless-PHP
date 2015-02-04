@@ -9,8 +9,8 @@
  * @license     Affero General Public License v3
  *
  * @since  	    Wednesday, February 04, 2015, 16:25 GMT+1
- * @modified    $Date: 2014-10-13 11:46:37 +0200 (Mon, 13 Oct 2014) $ $Author: dev@bizlogicdev.com $
- * @version     $Id: AdminController.php 109 2014-10-13 09:46:37Z dev@bizlogicdev.com $
+ * @modified    $Date$ $Author$
+ * @version     $Id$
  *
  * @category    Class
  * @package     Priceless PHP
