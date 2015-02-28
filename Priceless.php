@@ -18,6 +18,13 @@
 
 class Priceless
 {
+    /**
+     * Make an embed responsive
+     * 
+     * @param   string  $string
+     * @param   string  $targetWidth
+     * @return  string
+    */
     public function makeEmbedResponsive( $string, $targetWidth = '100%' )
     {
         $string = preg_replace(
@@ -28,4 +35,46 @@ class Priceless
     
         return $string;
     }
+    
+/**
+ * Get the mime type based on 
+ * the filename
+ * 
+ * @param   string  $file
+ * @return  string
+*/
+function getMimeTypeFromFile( $file )
+{
+    $mimeTypes = array(
+        '3gp'   => 'video/3gpp',        
+        'avi'   => 'video/x-msvideo',
+        'css'   => 'text/css',           
+        'doc'   => 'application/msword',
+        'docx'  => 'application/msword',
+        'exe'   => 'application/octet-stream',
+        'gif'   => 'image/gif',        
+        'htm'   => 'text/html',
+        'html'  => 'text/html',
+        'jpeg'  => 'image/jpg',
+        'jpg'   => 'image/jpg',                
+        'js'    => 'application/javascript',
+        'jsc'   => 'application/javascript',
+        'mp3'   => 'audio/mpeg',
+        'mpe'   => 'video/mpeg',                
+        'mpeg'  => 'video/mpeg',
+        'mpg'   => 'video/mpeg',
+        'mov'   => 'video/quicktime',
+        'php'   => 'text/html',                                   
+        'pdf'   => 'application/pdf',
+        'png'   => 'image/png',        
+        'ppt'   => 'application/vnd.ms-powerpoint',
+        'wav'   => 'audio/x-wav',
+        'zip'   => 'application/zip',
+        'xls'   => 'application/vnd.ms-excel',               
+    );
+
+    $extension = strtolower( end( explode('.', $file ) ) );
+
+    return $mimeTypes[$extension];
+}    
 }
