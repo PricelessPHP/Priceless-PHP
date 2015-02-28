@@ -36,45 +36,67 @@ class Priceless
         return $string;
     }
     
-/**
- * Get the mime type based on 
- * the filename
- * 
- * @param   string  $file
- * @return  string
-*/
-function getMimeTypeFromFile( $file )
-{
-    $mimeTypes = array(
-        '3gp'   => 'video/3gpp',        
-        'avi'   => 'video/x-msvideo',
-        'css'   => 'text/css',           
-        'doc'   => 'application/msword',
-        'docx'  => 'application/msword',
-        'exe'   => 'application/octet-stream',
-        'gif'   => 'image/gif',        
-        'htm'   => 'text/html',
-        'html'  => 'text/html',
-        'jpeg'  => 'image/jpg',
-        'jpg'   => 'image/jpg',                
-        'js'    => 'application/javascript',
-        'jsc'   => 'application/javascript',
-        'mp3'   => 'audio/mpeg',
-        'mpe'   => 'video/mpeg',                
-        'mpeg'  => 'video/mpeg',
-        'mpg'   => 'video/mpeg',
-        'mov'   => 'video/quicktime',
-        'php'   => 'text/html',                                   
-        'pdf'   => 'application/pdf',
-        'png'   => 'image/png',        
-        'ppt'   => 'application/vnd.ms-powerpoint',
-        'wav'   => 'audio/x-wav',
-        'zip'   => 'application/zip',
-        'xls'   => 'application/vnd.ms-excel',               
-    );
-
-    $extension = strtolower( end( explode('.', $file ) ) );
-
-    return $mimeTypes[$extension];
-}    
+    /**
+     * Get the mime type based on 
+     * the filename
+     * 
+     * @param   string  $file
+     * @return  string
+    */
+    function getMimeTypeFromFile( $file )
+    {
+        $mimeTypes = array(
+            '3gp'   => 'video/3gpp',        
+            'avi'   => 'video/x-msvideo',
+            'css'   => 'text/css',           
+            'doc'   => 'application/msword',
+            'docx'  => 'application/msword',
+            'exe'   => 'application/octet-stream',
+            'gif'   => 'image/gif',        
+            'htm'   => 'text/html',
+            'html'  => 'text/html',
+            'jpeg'  => 'image/jpg',
+            'jpg'   => 'image/jpg',                
+            'js'    => 'application/javascript',
+            'jsc'   => 'application/javascript',
+            'mp3'   => 'audio/mpeg',
+            'mpe'   => 'video/mpeg',                
+            'mpeg'  => 'video/mpeg',
+            'mpg'   => 'video/mpeg',
+            'mov'   => 'video/quicktime',
+            'php'   => 'text/html',                                   
+            'pdf'   => 'application/pdf',
+            'png'   => 'image/png',        
+            'ppt'   => 'application/vnd.ms-powerpoint',
+            'wav'   => 'audio/x-wav',
+            'zip'   => 'application/zip',
+            'xls'   => 'application/vnd.ms-excel',               
+        );
+    
+        $extension = strtolower( end( explode('.', $file ) ) );
+    
+        return $mimeTypes[$extension];
+    }   
+    
+    /**
+     * Get the file extension 
+     * based on the mime type
+     *
+     * @param   string  $mimeType
+     * @return  string
+    */
+    function getFileExtensionFromMimeType( $mimeType ) 
+    {
+        $extensions = array(
+            'image/bmp'     => 'bmp',
+            'image/gif'     => 'gif',
+            'image/jpg'     => 'jpg',
+            'image/jpeg'    => 'jpeg',        
+            'image/png'     => 'png',        
+            'text/xml'      => 'xml',
+        );
+    
+        return $extensions[$mime_type];
+    } 
+    
 }
