@@ -74,7 +74,7 @@ class Priceless
             'zip'   => 'application/zip',
         );
     
-        $extension = strtolower( end( explode('.', $file ) ) );
+        $extension = strtolower( end( explode( '.', $file ) ) );
     
         return $mimeTypes[ $extension ];
     }   
