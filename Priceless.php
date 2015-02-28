@@ -70,8 +70,8 @@ class Priceless
             'png'   => 'image/png',        
             'ppt'   => 'application/vnd.ms-powerpoint',
             'wav'   => 'audio/x-wav',
+            'xls'   => 'application/vnd.ms-excel',             
             'zip'   => 'application/zip',
-            'xls'   => 'application/vnd.ms-excel',               
         );
     
         $extension = strtolower( end( explode('.', $file ) ) );
