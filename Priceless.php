@@ -76,7 +76,7 @@ class Priceless
     
         $extension = strtolower( end( explode('.', $file ) ) );
     
-        return $mimeTypes[$extension];
+        return $mimeTypes[ $extension ];
     }   
     
     /**
@@ -97,7 +97,7 @@ class Priceless
             'text/xml'      => 'xml',
         );
     
-        return $extensions[$mime_type];
+        return $extensions[ $mimeType ];
     } 
     
 }
