@@ -44,7 +44,7 @@ class Priceless
      * @param   string  $file
      * @return  string
     */
-    function getMimeTypeFromFile( $file )
+    public function getMimeTypeFromFile( $file )
     {
         $mimeTypes = array(
             '3gp'   => 'video/3gpp',        
@@ -86,7 +86,7 @@ class Priceless
      * @param   string  $mimeType
      * @return  string
     */
-    function getFileExtensionFromMimeType( $mimeType ) 
+    public function getFileExtensionFromMimeType( $mimeType ) 
     {
         $extensions = array(
             'image/bmp'     => 'bmp',
@@ -99,5 +99,21 @@ class Priceless
     
         return $extensions[ $mimeType ];
     } 
-    
+ 
+    /**
+     * Convert an integer to 
+     * the corresponding month
+     * 
+     * @param   int     $integer
+     * @return  mixed   boolean or string
+    */
+    public function integerToMonth( $integer )
+    {
+        $integer = (int)$integer;
+        if( $integer == 0 ) {
+            return false;    
+        }
+        
+        return jdmonthname( gregoriantojd( $integer, 1, 1 ), CAL_MONTH_GREGORIAN_LONG );    
+    }   
 }
