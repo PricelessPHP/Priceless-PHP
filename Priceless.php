@@ -115,5 +115,18 @@ class Priceless
         }
         
         return jdmonthname( gregoriantojd( $integer, 1, 1 ), CAL_MONTH_GREGORIAN_LONG );    
-    }   
+    } 
+    
+    /**
+     * Remove traling slash 
+     * from a string
+     * 
+     * @param   string  $string
+     * @return  string
+    */
+    public function removeTrailingSlash( $string )
+    {
+        $string = rtrim( $string, '/' );
+        return $string;    
+    }    
 }
