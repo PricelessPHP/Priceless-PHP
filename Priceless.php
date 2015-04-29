@@ -133,30 +133,77 @@ class Priceless
     /**
      * Recursively delete a directory
      * 
+     * @link    http://stackoverflow.com/a/3338133
      * @param   string  $dir
      * @param   boolean $deleteSelf
      * @return  mixed
-     * @link    http://stackoverflow.com/a/3338133
     */
     public function recursive_rmdir( $dir, $deleteSelf = true ) 
     {
-    if ( is_dir( $dir ) ) {
-        $objects = scandir( $dir );
-        foreach ( $objects AS $object ) {
-            if ( ( $object != '.' ) AND ( $object != '..' ) ) {
-                if ( filetype( $dir.'/'.$object ) == 'dir' ) {
-                    recursive_rmdir( $dir.'/'.$object );
-                } else {
-                    unlink( $dir.'/'.$object );
+        if ( is_dir( $dir ) ) {
+            $objects = scandir( $dir );
+            foreach ( $objects AS $object ) {
+                if ( ( $object != '.' ) AND ( $object != '..' ) ) {
+                    if ( filetype( $dir.'/'.$object ) == 'dir' ) {
+                        recursive_rmdir( $dir.'/'.$object );
+                    } else {
+                        unlink( $dir.'/'.$object );
+                    }
                 }
             }
-        }
         
-        if( $deleteSelf ) {
-            $result = unlink( $dir );
-            return $result;
+            if( $deleteSelf ) {
+                $result = unlink( $dir );
+                return $result;
+            }
         }
     }
-}
-11:28
+    
+    /**
+     * Recursively copy a directory
+     * 
+     * @link    http://stackoverflow.com/a/7775949
+     * @param   string  $source
+     * @param   string  $target
+     * @return  void
+    */
+    public function copyRecursive( $source, $target )
+    {
+        if( !file_exists( $target ) ) {
+            mkdir( $target, 0755, true );
+        }
+
+        foreach (
+            $iterator = new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator( $source, \RecursiveDirectoryIterator::SKIP_DOTS),
+                \RecursiveIteratorIterator::SELF_FIRST) AS $item
+        ) {
+            if ( $item->isDir() ) {
+                $targetDir = $target . DIRECTORY_SEPARATOR . $iterator->getSubPathName();
+                if( !file_exists( $targetDir ) ) {
+                    mkdir( $targetDir );
+                }
+            } else {
+                copy( $item, $target . DIRECTORY_SEPARATOR . $iterator->getSubPathName() );
+            }
+        }
+    }
+
+    /**
+     * Slugify a string
+     * 
+     * @param   string  $string
+     * @return  string
+    */
+    public function slugify( $string )
+    {
+        $string     = strtolower( $string );    
+        $search     = array('_', "'", '!', 'ä', 'ö', 'ü');
+        $replace    = array('-', '-', '', 'ae', 'oe', 'ue');
+    
+        // replace
+        $string = str_replace( $search, $replace, $string );
+    
+        return $string;
+    }
 }
