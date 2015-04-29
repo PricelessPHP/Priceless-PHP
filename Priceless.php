@@ -128,5 +128,35 @@ class Priceless
     {
         $string = rtrim( $string, '/' );
         return $string;    
-    }    
+    }   
+    
+    /**
+     * Recursively delete a directory
+     * 
+     * @param   string  $dir
+     * @param   boolean $deleteSelf
+     * @return  mixed
+     * @link    http://stackoverflow.com/a/3338133
+    */
+    public function recursive_rmdir( $dir, $deleteSelf = true ) 
+    {
+    if ( is_dir( $dir ) ) {
+        $objects = scandir( $dir );
+        foreach ( $objects AS $object ) {
+            if ( ( $object != '.' ) AND ( $object != '..' ) ) {
+                if ( filetype( $dir.'/'.$object ) == 'dir' ) {
+                    recursive_rmdir( $dir.'/'.$object );
+                } else {
+                    unlink( $dir.'/'.$object );
+                }
+            }
+        }
+        
+        if( $deleteSelf ) {
+            $result = unlink( $dir );
+            return $result;
+        }
+    }
+}
+11:28
 }
