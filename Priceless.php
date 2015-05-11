@@ -215,7 +215,7 @@ class Priceless
      * @param   string  $publicKeyPath
      * @return  string
     */
-    function encrypt_openssl( $string, $publicKeyPath ) 
+    public function encrypt_openssl( $string, $publicKeyPath ) 
     {
         $fp         = fopen( $publicKeyPath, 'r' );
         $publicKey  = fread( $fp, 8192 );
@@ -236,7 +236,7 @@ class Priceless
      * @param   string  $privateKeyPath
      * @return  string
     */
-    function decrypt_openssl( $string, $privateKeyPath ) 
+    public function decrypt_openssl( $string, $privateKeyPath ) 
     {
         $fp         = fopen( $privateKeyPath, 'r' );
         $privateKey = fread( $fp, 8192 );
