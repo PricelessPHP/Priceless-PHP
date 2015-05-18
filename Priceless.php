@@ -258,7 +258,7 @@ class Priceless
      * @param   int $date
      * @return  int
     */
-    public function getStartOfCurrentWeek( $date )
+    public function getStartOfWeek( $date )
     {
         $date = (int)$date;
         if( $date == 0 ) {
