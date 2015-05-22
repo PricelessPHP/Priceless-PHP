@@ -290,5 +290,16 @@ class Priceless
         $week = date( 'W', $date );
             
         return strtotime( date( datetime::ISO8601, strtotime( $year.'W'.$week.'7' ) ) );
+    }
+    
+    /**
+     * Get the start of yesterday
+     *
+     * @link    http://stackoverflow.com/a/16009169
+     * @return  int
+    */
+    public function yesterday()
+    {
+        return date( 'm-d-Y', strtotime( '-1 days') );    
     }    
 }
