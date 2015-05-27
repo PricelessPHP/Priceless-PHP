@@ -300,6 +300,6 @@ class Priceless
     */
     public function yesterday()
     {
-        return date( 'm-d-Y', strtotime( '-1 days') );    
+        return strtotime( '-1 days' );    
     }    
 }
