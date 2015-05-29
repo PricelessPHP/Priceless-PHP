@@ -301,5 +301,29 @@ class Priceless
     public function yesterday()
     {
         return strtotime( '-1 days' );    
+    } 
+    
+    /**
+     * Force a file download
+     * 
+     * @param   string  $filePath
+     * @return  mixed   void or boolean
+    */
+    public function forceDownload( $filePath )
+    {
+        if ( file_exists( $filePath ) ) {
+            header('Content-Description: File Download');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename='.basename( $filePath ) );
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize( $filePath ) );
+            readfile( $filePath );
+            
+            exit;
+        } 
+        
+        return false;
     }    
 }
