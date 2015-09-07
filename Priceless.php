@@ -335,7 +335,7 @@ class Priceless
      * @param   string  $format
      * @return  string
     */
-    public function german_date( $date, $format = '%e.%m.%Y' )
+    public function german_date( $date, $format = '%d.%m.%Y' )
     {
         // get the current locale
         $originalLocale = setlocale( LC_TIME, '0' );
