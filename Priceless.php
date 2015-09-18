@@ -353,6 +353,17 @@ class Priceless
     }
     
     /**
+     * Format a number in German format
+     *
+     * @param   int     $number
+     * @return  string
+    */
+    public function german_number_format( $number )
+    {
+        return number_format( $number, 2, ',', '.' );    
+    }
+    
+    /**
      * Return a date formatted in
      * a specific locale
      *
